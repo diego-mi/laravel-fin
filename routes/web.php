@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('transacao', 'TransactionController');
+Route::resource('categoria', 'CategoryController');
+Route::resource('origem', 'CategoryController');
+Route::resource('tipo-operacao', 'TypeOperationController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+#Route::get('/', 'TransactionController@index');

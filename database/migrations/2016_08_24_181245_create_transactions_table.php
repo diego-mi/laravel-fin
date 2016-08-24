@@ -29,7 +29,7 @@ class CreateTransactionsTable extends Migration
             $table->integer('user_id')->unsigned();
 
             #foreign keys references
-            $table->foreign('type_operation_id')->references('id')->on('type_operations');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('source_id')->references('id')->on('sources');
             $table->foreign('user_id')->references('id')->on('users');
         });

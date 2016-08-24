@@ -17,9 +17,12 @@ class CreateSourcesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->timestamps();
+        });
 
+        Schema::table('sources', function ($table) {
             $table->integer('type_operation_id')->unsigned();
-            $table->foreign('type_operation_id')->references('id')->on('type_operation');
+
+            $table->foreign('type_operation_id')->references('id')->on('type_operations');
         });
     }
 
