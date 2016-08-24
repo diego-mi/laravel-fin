@@ -3,12 +3,11 @@
 @section('content')
     <div class="row">
         <div class="col-md-10">
-            <h1>Categorias</h1>
+            <h1>Tipos de Operação</h1>
         </div>
 
         <div class="col-md-2">
-            <a href="{{ route('categoria.create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Nova
-                Categoria</a>
+            <a href="{{ route('tipo-operacao.create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Novo Tipo de Operação</a>
         </div>
         <div class="col-md-12">
             <hr>
@@ -27,14 +26,14 @@
 
                 <tbody>
 
-                @foreach ($categories as $category)
+                @foreach ($typeoperations as $typeoperation)
 
                     <tr>
-                        <th>{{ $category->id }}</th>
-                        <td>{{ $category->title }}</td>
-                        <td>{{ date('M j, Y', strtotime($category->created_at)) }}</td>
-                        <td><a href="{{ route('categoria.show', $category->id) }}" class="btn btn-default btn-sm">Visualizar</a>
-                            <a href="{{ route('categoria.edit', $category->id) }}"
+                        <th>{{ $typeoperation->id }}</th>
+                        <td>{{ $typeoperation->title }}</td>
+                        <td>{{ date('M j, Y', strtotime($typeoperation->created_at)) }}</td>
+                        <td><a href="{{ route('tipo-operacao.show', $typeoperation->id) }}" class="btn btn-default btn-sm">Visualizar</a>
+                            <a href="{{ route('tipo-operacao.edit', $typeoperation->id) }}"
                                class="btn btn-default btn-sm">Editar</a></td>
                     </tr>
 
@@ -44,7 +43,7 @@
             </table>
 
             <div class="text-center">
-                {!! $categories->links(); !!}
+                {!! $typeoperations->links(); !!}
             </div>
         </div>
     </div>

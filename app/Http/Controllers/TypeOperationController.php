@@ -6,6 +6,7 @@ use App\TypeOperation;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Session;
 
 class TypeOperationController extends Controller
 {
@@ -26,8 +27,8 @@ class TypeOperationController extends Controller
      */
     public function index()
     {
-        $typeOperations = TypeOperation::orderBy('id')->paginate(10);
-        return view('type_operations.index')->withTypeoperations($typeOperations);
+        $typeoperations = TypeOperation::orderBy('id')->paginate(10);
+        return view('type_operations.index')->withTypeoperations($typeoperations);
     }
 
     /**
@@ -37,7 +38,7 @@ class TypeOperationController extends Controller
      */
     public function create()
     {
-        //
+        return view('type_operations.create');
     }
 
     /**
@@ -48,7 +49,19 @@ class TypeOperationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Save a new category and then redirect back to index
+        $this->validate($request, array(
+            'title' => 'required|max:255'
+        ));
+
+        $typeoperation = new TypeOperation;
+
+        $typeoperation->title = $request->title;
+        $typeoperation->save();
+
+        Session::flash('success', 'New TypeOperation has been created');
+
+        return redirect()->route('tipo-operacao.index');
     }
 
     /**
@@ -59,7 +72,8 @@ class TypeOperationController extends Controller
      */
     public function show($id)
     {
-        //
+        $typeoperation = TypeOperation::find($id);
+        return view('type_operations.show')->withTypeoperation($typeoperation);
     }
 
     /**
@@ -70,7 +84,8 @@ class TypeOperationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $typeoperation = TypeOperation::find($id);
+        return view('type_operations.edit')->withTypeoperation($typeoperation);
     }
 
     /**
@@ -82,7 +97,19 @@ class TypeOperationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Save a new category and then redirect back to index
+        $this->validate($request, array(
+            'title' => 'required|max:255'
+        ));
+
+        $typeoperation = TypeOperation::find($id);
+
+        $typeoperation->title = $request->title;
+        $typeoperation->save();
+
+        Session::flash('success', 'New TypeOperation has been edited');
+
+        return redirect()->route('tipo-operacao.index');
     }
 
     /**
@@ -93,6 +120,11 @@ class TypeOperationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $typeoperation = TypeOperation::find($id);
+
+        $typeoperation->delete();
+
+        Session::flash('success', 'The tipo de operacao was successfully deleted.');
+        return redirect()->route('tipo-operacao.index');
     }
 }

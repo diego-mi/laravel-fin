@@ -3,9 +3,9 @@
 @section('content')
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1>Nova Categoria</h1>
+            <h1>Novo Tipo de Operação</h1>
             <hr>
-            {!! Form::open(array('route' => 'categoria.store')) !!}
+            {!! Form::open(array('route' => 'tipo-operacao.store')) !!}
             {{ Form::label('title', 'Title:') }}
             {{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
 

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        {!! Form::model($category, ['route' => ['categoria.update', $category->id], 'method' => 'PUT']) !!}
+        {!! Form::model($typeoperation, ['route' => ['tipo-operacao.update', $typeoperation->id], 'method' => 'PUT']) !!}
         <div class="col-md-8">
             {{ Form::label('title', 'Title:') }}
             {{ Form::text('title', null, ["class" => 'form-control input-lg']) }}
@@ -12,17 +12,17 @@
             <div class="well">
                 <dl class="dl-horizontal">
                     <dt>Created At:</dt>
-                    <dd>{{ date('M j, Y h:ia', strtotime($category->created_at)) }}</dd>
+                    <dd>{{ date('M j, Y h:ia', strtotime($typeoperation->created_at)) }}</dd>
                 </dl>
 
                 <dl class="dl-horizontal">
                     <dt>Last Updated:</dt>
-                    <dd>{{ date('M j, Y h:ia', strtotime($category->updated_at)) }}</dd>
+                    <dd>{{ date('M j, Y h:ia', strtotime($typeoperation->updated_at)) }}</dd>
                 </dl>
                 <hr>
                 <div class="row">
                     <div class="col-sm-6">
-                        {!! Html::linkRoute('categoria.show', 'Cancel', array($category->id), array('class' => 'btn btn-danger btn-block')) !!}
+                        {!! Html::linkRoute('tipo-operacao.show', 'Cancel', array($typeoperation->id), array('class' => 'btn btn-danger btn-block')) !!}
                     </div>
                     <div class="col-sm-6">
                         {{ Form::submit('Editar', ['class' => 'btn btn-success btn-block']) }}
