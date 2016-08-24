@@ -15,6 +15,7 @@ class CreateTypeOperationsTable extends Migration
     {
         Schema::create('type_operations', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
             $table->timestamps();
         });
     }

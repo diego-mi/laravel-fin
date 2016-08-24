@@ -14,8 +14,24 @@ class CreateTransactionsTable extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
+            #table columns
             $table->increments('id');
+            $table->string('title');
+            $table->text('description');
+            $table->date('purchase_at');
+            $table->date('payment_at');
+            $table->float('value');
             $table->timestamps();
+
+            #foreign keys
+            $table->integer('category_id')->unsigned();
+            $table->integer('source_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+
+            #foreign keys references
+            $table->foreign('type_operation_id')->references('id')->on('type_operations');
+            $table->foreign('source_id')->references('id')->on('sources');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
