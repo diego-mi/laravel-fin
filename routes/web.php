@@ -13,7 +13,7 @@
 
 Route::resource('transacao', 'TransactionController');
 Route::resource('categoria', 'CategoryController');
-Route::resource('origem', 'CategoryController');
+Route::resource('origem', 'SourceController');
 Route::resource('tipo-operacao', 'TypeOperationController');
 
 Auth::routes();
