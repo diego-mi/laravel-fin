@@ -18,8 +18,8 @@ class CreateTransactionsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('description');
-            $table->date('purchase_at');
-            $table->date('payment_at');
+            $table->date('purchase_at')->nullable()->default(date(timestadate("Y/m/d H:i:s")));
+            $table->date('payment_at')->nullable()->default(date(timestadate("Y/m/d H:i:s")));
             $table->float('value');
             $table->timestamps();
 
